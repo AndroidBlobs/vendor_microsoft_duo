@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<permissions>
+    <feature name="com.microsoft.surface.vendor_layout_window_management" />
+</permissions>

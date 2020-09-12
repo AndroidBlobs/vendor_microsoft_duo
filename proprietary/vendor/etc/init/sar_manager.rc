@@ -1,0 +1,13 @@
+# Want to start as late as possible, this allows the services
+# used by SAR some additional time to start up
+#
+# NOTE: temporarily commented for testing - uncomment when done/ready
+on property:sys.boot_completed=1
+    start sar_manager
+
+# Set as disabled so that it only starts on boot_completed
+#
+service sar_manager /vendor/bin/sar_manager
+    user root
+    group root system log wifi inet radio net_admin audio net_raw
+    disabled

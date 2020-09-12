@@ -1,0 +1,28 @@
+# Wait to run this once after bootup.
+# Uses exec_start to block execution until onboot completes.
+on post-fs
+    exec_start driverdata_onboot_service
+    start driverdata_periodic_service
+
+# Run one time from the boot_completed property.
+service driverdata_onboot_service /vendor/bin/vendor.surface.driverdata.periodicbackup-service onboot
+    user system
+    group system
+    disabled
+    oneshot
+
+# Initially set to disabled because it will be started with boot_completed.
+# Rerun this service every 30secs to satisfy requirements.
+service driverdata_periodic_service /vendor/bin/vendor.surface.driverdata.periodicbackup-service onperiodic
+    user system
+    group system
+    restart_period 120
+    disabled
+
+# Service is only enabled during shutdown.
+service driverdata_shutdown_service /vendor/bin/vendor.surface.driverdata.periodicbackup-service onshutdown
+    user system
+    group system
+    disabled
+    oneshot
+    shutdown critical

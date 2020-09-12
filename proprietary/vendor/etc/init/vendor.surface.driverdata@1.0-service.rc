@@ -1,0 +1,6 @@
+service driverdataservice /vendor/bin/vendor.surface.driverdata@1.0-service
+    interface vendor.surface.driverdata@1.0::IDriverData default
+    class hal
+    user root
+    group root system
+    shutdown critical

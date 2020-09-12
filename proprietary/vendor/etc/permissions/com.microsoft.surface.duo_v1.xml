@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<permissions>
+    <feature name="com.microsoft.device.display.displaymask" />
+    <feature name="com.microsoft.device.service.inputbroker" />
+    <feature name="com.microsoft.device.service.clipboardbroker" />
+</permissions>
